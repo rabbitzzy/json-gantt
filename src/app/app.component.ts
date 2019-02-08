@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GanttEditorComponent, GanttEditorOptions } from 'ng-gantt';
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit {
   };
 
   public tasks: any[];
-  private depth = 4;
+  private depth = 5;
   public ganttOptions: GanttEditorOptions = {
     vCaptionType: 'Caption',
     vShowRes: 0,
@@ -46,12 +47,21 @@ export class AppComponent implements OnInit {
   };
   constructor(private http: HttpClient) {
     this.getJSON().subscribe(data => {
-     this.tasks = this.jsonToGantt(data, 0, 0);
+     // this.tasks = this.jsonToGantt(data, 0, 0);
     });
   }
+
+  public reloadData(jsonData) {
+    console.log('reload');
+    this.installGantt.setOptions(this.ganttOptions);
+    this.tasks = this.jsonToGantt(JSON.parse(jsonData), 0, 0);
+    console.log(this.tasks);
+  }
+
   public getJSON(): Observable<any> {
     return this.http.get('assets/data.json');
   }
+
 
   private jsonToGantt(data, parent, level): any[] {
     let ganttData: any[] = [];
@@ -66,8 +76,7 @@ export class AppComponent implements OnInit {
       for (const key of Object.keys(data)) {
         if (key === null || data[key] === null) {
           continue;
-        }
-        if (Array.isArray(data[key])) {
+        } else if ( ['tasks', 'steps'].includes(key.toLowerCase()) && Array.isArray(data[key])) {
           isGroup = 1;
           children.push(data[key]);
         } else if (typeof data[key] === 'object') {
@@ -127,6 +136,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.installGantt.setOptions(this.ganttOptions);
+    // this.reloadData();
   }
 }
