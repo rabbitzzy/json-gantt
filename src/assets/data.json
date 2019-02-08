@@ -1,0 +1,1130 @@
+{
+    "description": "Installs and configures OCC to be IaaS ready.",
+    "end-time": "2019-02-07T06:48:21",
+    "start-time": "2019-02-07T00:45:24",
+    "status": "SUCCESS",
+    "steps": [{
+        "dependency-list": [],
+        "end-time": "2019-02-07T00:49:38",
+        "name": "registry and core dns",
+        "pcu": {
+            "steps": [{
+                "end-time": "2019-02-07T00:45:32",
+                "id": 0,
+                "start-time": "2019-02-07T00:45:30",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:45:32",
+                    "id": 4,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:45:30",
+                    "status": "SUCCESS",
+                    "time-consumed": 2.0
+                }],
+                "time-consumed": 2.0
+            }, {
+                "end-time": "2019-02-07T00:45:37",
+                "id": 2,
+                "start-time": "2019-02-07T00:45:32",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:45:33",
+                    "id": 3,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:45:32",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "callbacks": [{
+                        "command": "ssh -t 10.244.17.253 -l root",
+                        "options": ["'/scratch/occ_pcu_preflight/src/workaround.sh --install_patchset >> /scratch/occ_pcu_preflight/log/install_patchset.log 2>>/scratch/occ_pcu_preflight/log/install_patchset.err'"],
+                        "status": "SUCCESS"
+                    }, {
+                        "command": "/scratch/occ_pcu_preflight/src/workaround.sh",
+                        "options": ["--apply_fqdn_patch", ">> /scratch/occ_pcu_preflight/log/apply_fqdn_patch.log", "2>>/scratch/occ_pcu_preflight/log/apply_fqdn_patch.err"],
+                        "status": "SUCCESS"
+                    }, {
+                        "command": "/scratch/occ_pcu_preflight/src/workaround.sh",
+                        "options": ["--apply_idcs_patch", ">> /scratch/occ_pcu_preflight/log/apply_idcs_patch.log", "2>>/scratch/occ_pcu_preflight/log/apply_idcs_patch.err"],
+                        "status": "SUCCESS"
+                    }, {
+                        "command": "ssh -t 10.244.17.253 -l root",
+                        "options": ["'/scratch/occ_pcu_preflight/src/workaround.sh --apply_idcs_patch >> /scratch/occ_pcu_preflight/log/apply_idcs_patch.log 2>>/scratch/occ_pcu_preflight/log/apply_idcs_patch.err'"],
+                        "status": "SUCCESS"
+                    }],
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:45:37",
+                    "id": 4,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:45:33",
+                    "status": "SUCCESS",
+                    "time-consumed": 4.0
+                }],
+                "time-consumed": 5.0
+            }, {
+                "end-time": "2019-02-07T00:49:38",
+                "id": 3,
+                "start-time": "2019-02-07T00:45:37",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:45:39",
+                    "id": 1,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:45:37",
+                    "status": "SUCCESS",
+                    "time-consumed": 2.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:45:40",
+                    "id": 2,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:45:39",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:45:55",
+                    "id": 3,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:45:40",
+                    "status": "SUCCESS",
+                    "time-consumed": 15.0
+                }, {
+                    "callbacks": [{
+                        "command": "/scratch/occ_pcu_preflight/src/workaround.sh",
+                        "options": ["--s3_workaround", ">> /scratch/occ_pcu_preflight/log/s3_workaround.log", "2>>/scratch/occ_pcu_preflight/log/s3_workaround.err"],
+                        "status": "SUCCESS"
+                    }, {
+                        "command": "ssh 10.244.17.253 -l root",
+                        "options": ["'/scratch/occ_pcu_preflight/src/workaround.sh --s3_workaround >> /scratch/occ_pcu_preflight/log/s3_workaround.log 2>>/scratch/occ_pcu_preflight/log/s3_workaround.err'"],
+                        "status": "SUCCESS"
+                    }],
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:46:01",
+                    "id": 4,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:45:55",
+                    "status": "SUCCESS",
+                    "time-consumed": 6.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:46:01",
+                    "id": 5,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:46:01",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:46:02",
+                    "id": 6,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:46:01",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:47:01",
+                    "id": 7,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:46:02",
+                    "status": "SUCCESS",
+                    "time-consumed": 59.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:47:01",
+                    "id": 8,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:47:01",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:47:02",
+                    "id": 9,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:47:01",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:47:02",
+                    "id": 10,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:47:02",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:49:38",
+                    "id": 11,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:47:02",
+                    "status": "SUCCESS",
+                    "time-consumed": 156.0
+                }],
+                "time-consumed": 241.0
+            }]
+        },
+        "prerequisites": [{
+            "command": "/scratch/occ_pcu_preflight/src/workaround.sh",
+            "options": ["--install_patchset", ">> /scratch/occ_pcu_preflight/log/install_patchset.log", "2>>/scratch/occ_pcu_preflight/log/install_patchset.err"],
+            "status": "SUCCESS"
+        }],
+        "start-time": "2019-02-07T00:45:30",
+        "status": "SUCCESS",
+        "time-consumed": 248.0
+    }, {
+        "dependency-list": [],
+        "end-time": "2019-02-07T03:48:06",
+        "name": "install racdb",
+        "pcu": {
+            "steps": [{
+                "end-time": "2019-02-07T03:48:06",
+                "id": 8,
+                "start-time": "2019-02-07T00:49:47",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:49:48",
+                    "id": 1,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:49:47",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:51:19",
+                    "id": 2,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:49:48",
+                    "status": "SUCCESS",
+                    "time-consumed": 91.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T00:51:35",
+                    "id": 3,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:51:19",
+                    "status": "SUCCESS",
+                    "time-consumed": 16.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T01:22:45",
+                    "id": 4,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T00:51:35",
+                    "status": "SUCCESS",
+                    "time-consumed": 1870.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T01:46:42",
+                    "id": 5,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T01:22:45",
+                    "status": "SUCCESS",
+                    "time-consumed": 1437.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T01:47:44",
+                    "id": 6,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T01:46:42",
+                    "status": "SUCCESS",
+                    "time-consumed": 62.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T02:45:28",
+                    "id": 7,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T01:47:44",
+                    "status": "SUCCESS",
+                    "time-consumed": 3464.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T02:57:24",
+                    "id": 8,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T02:45:28",
+                    "status": "SUCCESS",
+                    "time-consumed": 716.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:20:49",
+                    "id": 9,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T02:57:24",
+                    "status": "SUCCESS",
+                    "time-consumed": 1405.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:35:37",
+                    "id": 10,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:20:49",
+                    "status": "SUCCESS",
+                    "time-consumed": 888.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:39:04",
+                    "id": 11,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:35:37",
+                    "status": "SUCCESS",
+                    "time-consumed": 207.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:39:06",
+                    "id": 12,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:39:04",
+                    "status": "SUCCESS",
+                    "time-consumed": 2.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:47:38",
+                    "id": 13,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:39:06",
+                    "status": "SUCCESS",
+                    "time-consumed": 512.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:48:05",
+                    "id": 14,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:47:38",
+                    "status": "SUCCESS",
+                    "time-consumed": 27.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:48:06",
+                    "id": 15,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:48:05",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }],
+                "time-consumed": 10699.0
+            }]
+        },
+        "prerequisites": [{
+            "command": "/sbin/service",
+            "options": ["autofs", "restart"],
+            "status": "SUCCESS"
+        }, {
+            "command": "ssh 10.244.17.253 -l root",
+            "options": ["'/sbin/service autofs restart'"],
+            "status": "SUCCESS"
+        }],
+        "start-time": "2019-02-07T00:49:47",
+        "status": "SUCCESS",
+        "time-consumed": 10699.0
+    }, {
+        "dependency-list": [],
+        "end-time": "2019-02-07T05:19:07",
+        "name": "primordial idcs",
+        "pcu": {
+            "steps": [{
+                "end-time": "2019-02-07T05:19:07",
+                "id": 9,
+                "start-time": "2019-02-07T03:48:06",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:48:16",
+                    "id": 1,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:48:06",
+                    "status": "SUCCESS",
+                    "time-consumed": 10.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:48:18",
+                    "id": 2,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:48:16",
+                    "status": "SUCCESS",
+                    "time-consumed": 2.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:48:20",
+                    "id": 3,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:48:18",
+                    "status": "SUCCESS",
+                    "time-consumed": 2.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T03:48:45",
+                    "id": 4,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:48:20",
+                    "status": "SUCCESS",
+                    "time-consumed": 25.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T04:58:33",
+                    "id": 5,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T03:48:45",
+                    "status": "SUCCESS",
+                    "time-consumed": 4188.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T04:58:47",
+                    "id": 6,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T04:58:33",
+                    "status": "SUCCESS",
+                    "time-consumed": 14.0
+                }, {
+                    "callbacks": [{
+                        "command": "/scratch/occ_pcu_preflight/src/deployer/scripts/workarounds.sh",
+                        "onfail": "yes",
+                        "options": ["--pcu_s9_t7", ">> /scratch/occ_pcu_preflight/log/pcu_deploy_workaround.log", "2>>/scratch/occ_pcu_preflight/log/pcu_deploy_workaround.err"],
+                        "status": "SUCCESS"
+                    }],
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:03:42",
+                    "id": 7,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T04:58:47",
+                    "status": "SUCCESS",
+                    "time-consumed": 295.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:17:58",
+                    "id": 8,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:03:42",
+                    "status": "SUCCESS",
+                    "time-consumed": 856.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:18:59",
+                    "id": 9,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:17:58",
+                    "status": "SUCCESS",
+                    "time-consumed": 61.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:00",
+                    "id": 10,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:18:59",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:06",
+                    "id": 11,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:00",
+                    "status": "SUCCESS",
+                    "time-consumed": 6.0
+                }, {
+                    "callbacks": [{
+                        "command": "iptables",
+                        "options": ["-I INPUT", "-p tcp", "--dport 1521", "-j ACCEPT"],
+                        "status": "SUCCESS"
+                    }, {
+                        "command": "ssh 10.244.17.253 -l root",
+                        "options": ["'iptables -I INPUT -p tcp --dport 1521 -j ACCEPT'"],
+                        "status": "SUCCESS"
+                    }],
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:07",
+                    "id": 12,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:06",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }],
+                "time-consumed": 5461.0
+            }]
+        },
+        "start-time": "2019-02-07T03:48:06",
+        "status": "SUCCESS",
+        "time-consumed": 5461.0
+    }, {
+        "dependency-list": [],
+        "end-time": "2019-02-07T06:25:28",
+        "name": "install and config oss",
+        "pcu": {
+            "steps": [{
+                "end-time": "2019-02-07T06:10:11",
+                "id": 10,
+                "start-time": "2019-02-07T05:19:07",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "callbacks": [{
+                        "command": "/bin/cp",
+                        "options": ["/scratch/occ_pcu_preflight/config/oss-enso-docker.json", "${PCU_HOME}/external/containers/oss/oss-enso-docker.json"],
+                        "status": "SUCCESS"
+                    }],
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:10",
+                    "id": 1,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:07",
+                    "status": "SUCCESS",
+                    "time-consumed": 3.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:10",
+                    "id": 2,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:10",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:10",
+                    "id": 3,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:10",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:11",
+                    "id": 4,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:10",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:11",
+                    "id": 5,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:11",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:11",
+                    "id": 6,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:11",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:11",
+                    "id": 7,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:11",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:19:12",
+                    "id": 8,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:11",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:48:37",
+                    "id": 9,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:19:12",
+                    "status": "SUCCESS",
+                    "time-consumed": 1765.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:49:35",
+                    "id": 10,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:48:37",
+                    "status": "SUCCESS",
+                    "time-consumed": 58.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:49:37",
+                    "id": 11,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:49:35",
+                    "status": "SUCCESS",
+                    "time-consumed": 2.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:49:38",
+                    "id": 12,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:49:37",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:49:38",
+                    "id": 13,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:49:38",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T05:54:42",
+                    "id": 14,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:49:38",
+                    "status": "SUCCESS",
+                    "time-consumed": 304.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:10:10",
+                    "id": 15,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T05:54:42",
+                    "status": "SUCCESS",
+                    "time-consumed": 928.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:10:10",
+                    "id": 16,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:10:10",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:10:11",
+                    "id": 17,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:10:10",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:10:11",
+                    "id": 18,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:10:11",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:10:11",
+                    "id": 19,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:10:11",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }],
+                "time-consumed": 3064.0
+            }, {
+                "end-time": "2019-02-07T06:17:48",
+                "id": 11,
+                "post-actions": [{
+                    "command": "/scratch/occ_pcu_preflight/src/workaround.sh",
+                    "options": ["--patch_lctools_image", ">> /scratch/occ_pcu_preflight/log/patch_lctools_image.log", "2>>/scratch/occ_pcu_preflight/log/patch_lctools_image.err"],
+                    "status": "SUCCESS"
+                }, {
+                    "command": "ssh -t 10.244.17.253 -l root",
+                    "options": ["'/scratch/occ_pcu_preflight/src/workaround.sh --patch_lctools_image >> /scratch/occ_pcu_preflight/log/patch_lctools_image.log 2>>/scratch/occ_pcu_preflight/log/patch_lctools_image.err'"],
+                    "status": "SUCCESS"
+                }],
+                "start-time": "2019-02-07T06:10:11",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:10:55",
+                    "id": 1,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:10:11",
+                    "status": "SUCCESS",
+                    "time-consumed": 44.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:17:16",
+                    "id": 2,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:10:55",
+                    "status": "SUCCESS",
+                    "time-consumed": 381.0
+                }],
+                "time-consumed": 457.0
+            }, {
+                "end-time": "2019-02-07T06:25:28",
+                "id": 12,
+                "start-time": "2019-02-07T06:17:48",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:25:28",
+                    "id": 4,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:17:48",
+                    "status": "SUCCESS",
+                    "time-consumed": 460.0
+                }],
+                "time-consumed": 460.0
+            }]
+        },
+        "start-time": "2019-02-07T05:19:07",
+        "status": "SUCCESS",
+        "time-consumed": 3981.0
+    }, {
+        "dependency-list": [],
+        "end-time": "2019-02-07T06:29:29",
+        "name": "config seed",
+        "pcu": {
+            "steps": [{
+                "end-time": "2019-02-07T06:29:29",
+                "id": 13,
+                "start-time": "2019-02-07T06:25:28",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:26:16",
+                    "id": 3,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:25:28",
+                    "status": "SUCCESS",
+                    "time-consumed": 48.0
+                }, {
+                    "callbacks": [{
+                        "command": "/scratch/occ_pcu_preflight/src/workaround.sh",
+                        "options": ["--configure_seed", ">> /scratch/occ_pcu_preflight/log/configure_seed.log", "2>>/scratch/occ_pcu_preflight/log/configure_seed.err"],
+                        "status": "SUCCESS"
+                    }],
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:26:18",
+                    "id": 5,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:26:16",
+                    "status": "SUCCESS",
+                    "time-consumed": 2.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:28:27",
+                    "id": 6,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:26:18",
+                    "status": "SUCCESS",
+                    "time-consumed": 129.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:28:33",
+                    "id": 7,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:28:27",
+                    "status": "SUCCESS",
+                    "time-consumed": 6.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:28:39",
+                    "id": 9,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:28:33",
+                    "status": "SUCCESS",
+                    "time-consumed": 6.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:28:40",
+                    "id": 10,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:28:39",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "callbacks": [{
+                        "command": "/scratch/occ_pcu_preflight/src/deployer/scripts/workarounds.sh",
+                        "onfail": "yes",
+                        "options": ["--pcu_s13_t11", ">> /scratch/occ_pcu_preflight/log/pcu_deploy_workaround.log", "2>>/scratch/occ_pcu_preflight/log/pcu_deploy_workaround.err"],
+                        "status": "SUCCESS"
+                    }],
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:28:52",
+                    "id": 11,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:28:40",
+                    "status": "SUCCESS",
+                    "time-consumed": 12.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:28:53",
+                    "id": 12,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:28:52",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:29:06",
+                    "id": 13,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:28:53",
+                    "status": "SUCCESS",
+                    "time-consumed": 13.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:29:08",
+                    "id": 14,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:29:06",
+                    "status": "SUCCESS",
+                    "time-consumed": 2.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:29:12",
+                    "id": 15,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:29:08",
+                    "status": "SUCCESS",
+                    "time-consumed": 4.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:29:13",
+                    "id": 16,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:29:12",
+                    "status": "SUCCESS",
+                    "time-consumed": 1.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:29:13",
+                    "id": 17,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:29:13",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:29:29",
+                    "id": 18,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:29:13",
+                    "status": "SUCCESS",
+                    "time-consumed": 16.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:29:29",
+                    "id": 19,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:29:29",
+                    "status": "SUCCESS",
+                    "time-consumed": 0.0
+                }],
+                "time-consumed": 241.0
+            }]
+        },
+        "start-time": "2019-02-07T06:25:28",
+        "status": "SUCCESS",
+        "time-consumed": 241.0
+    }, {
+        "dependency-list": [],
+        "end-time": "2019-02-07T06:48:21",
+        "name": "config lbr and control dns",
+        "pcu": {
+            "steps": [{
+                "end-time": "2019-02-07T06:48:21",
+                "id": 15,
+                "start-time": "2019-02-07T06:29:29",
+                "status": "SUCCESS",
+                "tasks": [{
+                    "callbacks": [{
+                        "command": "/scratch/occ_pcu_preflight/src/deployer/scripts/workarounds.sh",
+                        "onfail": "yes",
+                        "options": ["--pcu_s15_t1", ">> /scratch/occ_pcu_preflight/log/pcu_deploy_workaround.log", "2>>/scratch/occ_pcu_preflight/log/pcu_deploy_workaround.err"],
+                        "status": "NOTRUN"
+                    }, {
+                        "command": "/scratch/occ_pcu_preflight/src/workaround.sh",
+                        "options": ["--add_dnszone", ">> /scratch/occ_pcu_preflight/log/add_dnszone.log", "2>>/scratch/occ_pcu_preflight/log/add_dnszone.err"],
+                        "status": "SUCCESS"
+                    }],
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:35:21",
+                    "id": 1,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:29:29",
+                    "status": "SUCCESS",
+                    "time-consumed": 352.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:38:29",
+                    "id": 2,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:35:21",
+                    "status": "SUCCESS",
+                    "time-consumed": 188.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:41:26",
+                    "id": 3,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:38:29",
+                    "status": "SUCCESS",
+                    "time-consumed": 177.0
+                }, {
+                    "dependency-list": [],
+                    "end-time": "2019-02-07T06:48:21",
+                    "id": 4,
+                    "retry": {
+                        "attempts": 0,
+                        "interval": 0
+                    },
+                    "start-time": "2019-02-07T06:41:26",
+                    "status": "SUCCESS",
+                    "time-consumed": 415.0
+                }],
+                "time-consumed": 1132.0
+            }]
+        },
+        "start-time": "2019-02-07T06:29:29",
+        "status": "SUCCESS",
+        "time-consumed": 1132.0
+    }],
+    "time-consumed": 21777.0
+}

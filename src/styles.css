@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~jsgantt-improved/dist/jsgantt.css";
+
+.gmainleft {
+  width: 20%;
+}
+
+.gmainright {
+  width: 80%;
+}
+
+div.glistlbl.gcontainercol {
+  width: 100%;
+}
+
+table.gtasktableh {
+  width: 100%;
+}
+
+table.gcharttableh {
+  width: 100%;
+}
+
+table.gcharttable {
+  width: 100% !important;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+}
